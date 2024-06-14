@@ -1,0 +1,6 @@
+flask
+Flask-SQLAlchemy
+flask-login
+img2pdf
+pdf2docx
+ppt2pdf

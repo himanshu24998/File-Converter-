@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dash.css') }}">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <title>{% block title %}About Us{% endblock %}</title>
+   </head>
+
+<body>
+<!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-joomla icon'></i>
+        <div class="logo_name">Filefusion</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="/">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+         <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+       <a href="/file-convertor">
+         <i class='bx bxs-file-pdf' ></i>
+         <span class="links_name">File Converter</span>
+       </a>
+       <span class="tooltip">File Converter</span>
+     </li>
+     <li>
+       <a href="/todo">
+         <i class='bx bx-note' ></i>
+         <span class="links_name">To-Do List</span>
+       </a>
+       <span class="tooltip">To-Do List</span>
+     </li>
+     <li>
+       <a href="/about-us">
+         <i class='bx bx-user' ></i>
+         <span class="links_name">About Us</span>
+       </a>
+       <span class="tooltip">About Us
+       </span>
+     </li>
+     <li>
+       <a href="/contact-us">
+         <i class='bx bxs-contact' ></i>
+         <span class="links_name">Contact Us</span>
+       </a>
+
+       <span class="tooltip">Contact Us</span>
+     </li>
+     <li>
+       <a href="/privacy">
+         <i class='bx bx-lock' ></i>
+         <span class="links_name">Privacy Policy</span>
+       </a>
+       <span class="tooltip">Privacy Policy</span>
+     </li>
+     <li class="profile">
+
+         <div class="profile-details">
+           <div class="name_job">
+
+             <span class="job">Logout</span>
+
+             <div class="job">Hello User !!</div>
+
+           </div>
+         </div>
+         <a href="/logout">
+         <i class='bx bx-log-out' id="log_out" ></i>
+         </a>
+     </li>
+    </ul>
+  </div>
+
+<!-- Working Area -->
+  <section class="home-section">
+      <div class="text">About Us</div>
+      <section class="home-section2">
+          <h4>Welcome to Filefusion!</h4>
+          <br/>
+          <p>
+              Our mission is to provide a simple and user-friendly platform for users to convert their files into different formats
+              and create and manage their notes in one place. We understand the importance of having a reliable tool to convert files
+              and keep track of important information, and that's why we created this website to meet those needs.</p>
+          <br/><p>
+              Our file convertor allows users to easily convert various file formats such as Word, Excel, PowerPoint, PDF, and more.
+              With just a few clicks, users can upload their files and convert them to their desired format.
+              Whether it's for personal or professional use, our file convertor simplifies the process and saves users time and effort.</p>
+          <br/><p>
+              In addition to our file convertor, we also offer a notes making tool that allows users to create and manage
+              their notes in one place. Our notes making tool allows users to organize their notes by topic, add attachments,
+              and even set reminders to stay on track. With our user-friendly interface, creating and managing notes has never been easier.</p>
+          <br/><p>
+              At our website, we are committed to providing exceptional customer service and support.
+              Our team is always available to assist users with any questions or concerns they may have,
+              and we strive to continuously improve our platform to meet the changing needs of our users.</p>
+          <br/><p>
+              Thank you for choosing our website for your file conversion and note-taking needs.
+              We look forward to helping you streamline your work and achieve your goals.</p>
+
+      </section>
+  </section>
+</form>
+
+
+
+
+
+
+
+<script>
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+  let searchBtn = document.querySelector(".bx-search");
+
+  closeBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("open");
+    menuBtnChange();//calling the function(optional)
+  });
+
+  searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+    sidebar.classList.toggle("open");
+    menuBtnChange(); //calling the function(optional)
+  });
+
+  // following are the code to change sidebar button(optional)
+  function menuBtnChange() {
+   if(sidebar.classList.contains("open")){
+     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+   }else {
+     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+   }
+  }
+  </script>
+</body>
+</html>

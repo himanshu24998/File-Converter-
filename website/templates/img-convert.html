@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dash.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='convert.css') }}">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='convert.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='convert1.js') }}"></script>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <title>{% block title %}IMG-PDF Convertor{% endblock %}</title>
+   </head>
+
+<body>
+<!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-joomla icon'></i>
+        <div class="logo_name">Filefusion</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="/">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+         <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+       <a href="/file-convertor">
+         <i class='bx bxs-file-pdf' ></i>
+         <span class="links_name">File Converter</span>
+       </a>
+       <span class="tooltip">File Converter</span>
+     </li>
+     <li>
+       <a href="/todo">
+         <i class='bx bx-note' ></i>
+         <span class="links_name">To-Do List</span>
+       </a>
+       <span class="tooltip">To-Do List</span>
+     </li>
+     <li>
+       <a href="/about-us">
+         <i class='bx bx-user' ></i>
+         <span class="links_name">About Us</span>
+       </a>
+       <span class="tooltip">About Us
+       </span>
+     </li>
+     <li>
+       <a href="/contact-us">
+         <i class='bx bxs-contact' ></i>
+         <span class="links_name">Contact Us</span>
+       </a>
+
+       <span class="tooltip">Contact Us</span>
+     </li>
+     <li>
+       <a href="/privacy">
+         <i class='bx bx-lock' ></i>
+         <span class="links_name">Privacy Policy</span>
+       </a>
+       <span class="tooltip">Privacy Policy</span>
+     </li>
+     <li class="profile">
+
+         <div class="profile-details">
+           <div class="name_job">
+
+             <span class="job">Logout</span>
+
+             <div class="job">Hello User !!</div>
+
+           </div>
+         </div>
+         <a href="/logout">
+         <i class='bx bx-log-out' id="log_out" ></i>
+         </a>
+     </li>
+    </ul>
+  </div>
+
+<!-- Working Area -->
+  <section class="home-section">
+      <div class="text">IMG to PDF Convertor</div>
+      <section class="home-section3">
+
+          <form method="post" action="/img-converted" enctype="multipart/form-data">
+              <div id="upload" class="modal" data-state="0" data-ready="false">
+                  <div class="modal__header">
+                      <button class="modal__close-button" type="button">
+                          <svg class="modal__close-icon" viewBox="0 0 16 16" width="16px" height="16px" aria-hidden="true">
+                              <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                                  <polyline points="1,1 15,15" />
+                                  <polyline points="15,1 1,15" />
+                              </g>
+                          </svg>
+                          <span class="modal__sr">Close</span>
+                      </button>
+                  </div>
+	<div class="modal__body">
+		<div class="modal__col">
+			<!-- up -->
+			<svg class="modal__icon modal__icon--blue" viewBox="0 0 24 24" width="24px" height="24px" aria-hidden="true">
+				<g fill="none" stroke="hsl(223,90%,50%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<circle class="modal__icon-sdo69" cx="12" cy="12" r="11" stroke-dasharray="69.12 69.12" />
+					<polyline class="modal__icon-sdo14" points="7 12 12 7 17 12" stroke-dasharray="14.2 14.2" />
+					<line class="modal__icon-sdo10" x1="12" y1="7" x2="12" y2="17" stroke-dasharray="10 10" />
+				</g>
+			</svg>
+			<!-- error -->
+			<svg class="modal__icon modal__icon--red" viewBox="0 0 24 24" width="24px" height="24px" aria-hidden="true" display="none">
+				<g fill="none" stroke="hsl(3,90%,50%)" stroke-width="2" stroke-linecap="round">
+					<circle class="modal__icon-sdo69" cx="12" cy="12" r="11" stroke-dasharray="69.12 69.12" />
+					<line class="modal__icon-sdo14" x1="7" y1="7" x2="17" y2="17" stroke-dasharray="14.2 14.2" />
+					<line class="modal__icon-sdo14" x1="17" y1="7" x2="7" y2="17" stroke-dasharray="14.2 14.2" />
+				</g>
+			</svg>
+			<!-- check -->
+			<svg class="modal__icon modal__icon--green" viewBox="0 0 24 24" width="24px" height="24px" aria-hidden="true" display="none">
+				<g fill="none" stroke="hsl(138,90%,50%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<circle class="modal__icon-sdo69" cx="12" cy="12" r="11" stroke-dasharray="69.12 69.12" />
+					<polyline class="modal__icon-sdo14" points="7 12.5 10 15.5 17 8.5" stroke-dasharray="14.2 14.2" />
+				</g>
+			</svg>
+		</div>
+		<div class="modal__col">
+			<div class="modal__content">
+				<h2 class="modal__title">Upload a File</h2>
+				<p class="modal__message">Select a file to upload from your computer</p>
+				<div class="modal__actions">
+					<button class="modal__button modal__button--upload file-chooser__input" type="button" data-action="file">Choose File</button>
+					<input id="file" class="file-c<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>hooser__input" type="file"  name="img" hidden>
+				</div>
+				<div class="modal__actions" hidden>
+					<svg class="modal__file-icon" viewBox="0 0 24 24" width="24px" height="24px" aria-hidden="true">
+						<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<polygon points="4 1 12 1 20 8 20 23 4 23" />
+							<polyline points="12 1 12 8 20 8" />
+						</g>
+					</svg>
+					<div class="modal__file" data-file></div>
+					<button class="modal__close-button" type="button" data-action="fileReset">
+						<svg class="modal__close-icon" viewBox="0 0 16 16" width="16px" height="16px" aria-hidden="true">
+							<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+								<polyline points="4,4 12,12" />
+								<polyline points="12,4 4,12" />
+							</g>
+						</svg>
+						<span class="modal__sr">Remove</span>
+					</button>
+					<button class="modal__button" type="button" data-action="upload">Upload</button>
+				</div>
+			</div>
+			<div class="modal__content" hidden>
+				<h2 class="modal__title">Uploading…</h2>
+				<p class="modal__message">Just give us a moment to process your file.</p>
+				<div class="modal__actions">
+					<div class="modal__progress">
+						<div class="modal__progress-value" data-progress-value>0%</div>
+						<div class="modal__progress-bar">
+							<div class="modal__progress-fill" data-progress-fill></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal__content" hidden>
+				<h2 class="modal__title">Oops!</h2>
+				<p class="modal__message">Your file could not be uploaded due to an error. Try uploading it again?</p>
+				<div class="modal__actions modal__actions--center">
+					<button class="modal__button" type="button" data-action="upload">Retry</button>
+					<button class="modal__button" type="button" data-action="cancel">Cancel</button>
+				</div>
+			</div>
+			<div class="modal__content" hidden>
+				<h2 class="modal__title">Upload Successful!</h2>
+				<p class="modal__message">Your file has been uploaded.</p>
+				<div class="modal__actions modal__actions--center">
+                    <button class="modal__button" type="submit" value="upload"><b>Convert</b></button>
+					<button class="modal__button" type="button" data-action="cancel"><b>RESET</b></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+          </form>
+      </section>
+  </section>
+
+
+<script>
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+  let searchBtn = document.querySelector(".bx-search");
+
+  closeBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("open");
+    menuBtnChange();//calling the function(optional)
+  });
+
+  searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+    sidebar.classList.toggle("open");
+    menuBtnChange(); //calling the function(optional)
+  });
+
+  // following are the code to change sidebar button(optional)
+  function menuBtnChange() {
+   if(sidebar.classList.contains("open")){
+     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+   }else {
+     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+   }
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dash.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='file-convert.css') }}">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <title>{% block title %}Dashboard{% endblock %}</title>
+   </head>
+
+<body>
+<!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-joomla icon'></i>
+        <div class="logo_name">Filefusion</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="/">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+         <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+       <a href="/file-convertor">
+         <i class='bx bxs-file-pdf' ></i>
+         <span class="links_name">File Converter</span>
+       </a>
+       <span class="tooltip">File Converter</span>
+     </li>
+     <li>
+       <a href="/todo">
+         <i class='bx bx-note' ></i>
+         <span class="links_name">To-Do List</span>
+       </a>
+       <span class="tooltip">To-Do List</span>
+     </li>
+     <li>
+       <a href="/about-us">
+         <i class='bx bx-user' ></i>
+         <span class="links_name">About Us</span>
+       </a>
+       <span class="tooltip">About Us
+       </span>
+     </li>
+     <li>
+       <a href="/contact-us">
+         <i class='bx bxs-contact' ></i>
+         <span class="links_name">Contact Us</span>
+       </a>
+
+       <span class="tooltip">Contact Us</span>
+     </li>
+     <li>
+       <a href="/privacy">
+         <i class='bx bx-lock' ></i>
+         <span class="links_name">Privacy Policy</span>
+       </a>
+       <span class="tooltip">Privacy Policy</span>
+     </li>
+     <li class="profile">
+
+         <div class="profile-details">
+           <div class="name_job">
+
+             <span class="job">Logout</span>
+
+             <div class="job">Hello User !!</div>
+
+           </div>
+         </div>
+         <a href="/logout">
+         <i class='bx bx-log-out' id="log_out" ></i>
+         </a>
+     </li>
+    </ul>
+  </div>
+
+<!-- Working Area -->
+  <section class="home-section">
+      <div class="text">File Convertor</div>
+      <br/><br/>
+      <section class="home-section2">
+
+    <section class="container">
+      <div class="card_outer">
+        <div class="card">
+          <div class="content">
+            <p class="copy">Convert your image files to PDF format with our IMG to PDF converter. Try it now!</p>
+              <button class="btn"><a style="color: black;font-size: 0.75rem;" href="/img-convertor"> Convert</a></button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="content">
+            <p class="copy">Easily convert your PDFs to Word documents with our PDF to Word Converter. Try it now</p>
+            <button class="btn"><a style="color: black;font-size: 0.75rem;" href="/word-convertor"> Convert</a></button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="content">
+            <p class="copy">Transform your PowerPoint presentations into engaging PDFs using our PPT to PDF converter. Give it a try today!</p>
+            <button class="btn"><a style="color: black;font-size: 0.75rem;" href="/ppt-convertor"> Convert</a></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+          </section>
+  </section>
+
+<script>
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+  let searchBtn = document.querySelector(".bx-search");
+
+  closeBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("open");
+    menuBtnChange();//calling the function(optional)
+  });
+
+  searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+    sidebar.classList.toggle("open");
+    menuBtnChange(); //calling the function(optional)
+  });
+
+  // following are the code to change sidebar button(optional)
+  function menuBtnChange() {
+   if(sidebar.classList.contains("open")){
+     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+   }else {
+     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+   }
+  }
+  </script>
+</body>
+</html>

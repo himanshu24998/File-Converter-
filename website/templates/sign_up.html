@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>{% block title %}Register{% endblock %}</title>
+
+</head>
+<body>
+<a href="https://imgtr.ee/i/J2kYX"><img src="https://imgtr.ee/images/2023/04/29/J2kYX.png" alt="J2kYX.png" height="50" /></a>
+<form method="POST">
+   <div class="box">
+    <div class="container">
+
+        <div class="input-field">
+            <input type="text" class="input" placeholder="Full Name" id="fullName" name="fullName">
+            <i class='bx bx-user' ></i>
+        </div>
+
+        <div class="input-field">
+            <input type="email" class="input" placeholder="Username" id="email" name="email">
+            <i class='bx bx-mail-send' ></i>
+        </div>
+
+        <div class="input-field">
+            <input type="password" class="input" placeholder="Password" id="password1" name="password1">
+            <i class='bx bx-lock-alt'></i>
+        </div>
+
+        <div class="input-field">
+            <input type="password" class="input" placeholder=" Confirm Password" id="password2" name="password2">
+            <i class='bx bx-lock-alt'></i>
+        </div>
+
+        <div class="input-field">
+            <input type="submit" class="submit" value="Register" id="">
+        </div>
+    <div class="two-col">
+            <div class="two">
+                <h4 align="right">Already have an account ? <a class="abc" href="/login">Sign In</a></h4>
+            </div>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %} {% if category ==
+    'error' %}
+    <div align="center"  role="alert" style="color: red">
+      {{ message }}
+    </div>
+    {% else %}
+    <div align="center" role="alert" style="color: #5029bc">
+      {{ message }}
+    </div>
+
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+
+
+    </div>
+</div>
+</form>
+</body>
+</html>
